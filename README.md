@@ -26,6 +26,11 @@ Mitsui Terminal implements two non-custodial login methods:
 
 ![mitsui-zk-login](https://github.com/user-attachments/assets/111b8feb-df7a-4bae-b270-51a1129fe260)
 
+Implementation details can be found here:
+- [Google Sign In](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/src/components/auth/GoogleSignIn.tsx)
+- [ZK Login Local Service](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/src/utils/zkLogin.ts)
+- [ZK Login JWTAddress + Proof](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/src/app/api/zk-login/route.ts)
+
 Beyond this, Mitsui Terminal leverages **Walrus devnet storage** to store sentiment analysis data processed in batches.
 The plan is to create enough timestamp datasets that can be leveraged by the community. Implementaton of this can be found here:
 - [General data batch procesing scripts](https://github.com/Mitsui-Protocol/mitsui-terminal/tree/main/scripts)
