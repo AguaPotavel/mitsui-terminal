@@ -20,6 +20,16 @@ With Mitsui Terminal, users can engage in a variety of workflows:
 ## Integrations
 
 ### Sui Network
+Mitsui Terminal implements two non-custodial login methods:
+1. **ZK Login** through Google OAuth
+2. Import & wallet creation
+
+![mitsui-zk-login](https://github.com/user-attachments/assets/111b8feb-df7a-4bae-b270-51a1129fe260)
+
+Beyond this, Mitsui Terminal leverages **Walrus devnet storage** to store sentiment analysis data processed in batches.
+The plan is to create enough timestamp datasets that can be leveraged by the community. Implementaton of this can be found here:
+- [General data batch procesing scripts](https://github.com/Mitsui-Protocol/mitsui-terminal/tree/main/scripts)
+- [Walrus upload implementation](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/scripts/push-to-walrus.js)
 
 ### Atoma Network
 
