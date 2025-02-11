@@ -37,8 +37,21 @@ The plan is to create enough timestamp datasets that can be leveraged by the com
 - [Walrus upload implementation](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/scripts/push-to-walrus.js)
 
 ### Atoma Network
+Mitsui Terminal has the ability to leverage local open source models ran on-device, and also remotely access models such as DeepSeek offered by Atoma Network. 
+
+Implementation of the agent functionality can be found here:
+- [Atoma agent queries](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/src/app/api/chat/route.js)
+
+We further leverage Atoma's model to analyze tweets:
+- [Analyzer scripts](https://github.com/Mitsui-Protocol/mitsui-terminal/tree/main/scripts)
+- [Tweet analyzer](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/scripts/analyze-tweets.js)
 
 ### Eliza Framework
+To afford Mitsui Terminal with a personality the Eliza Framework is used to create multiple characters. Additionally, we leverage their Twitter service to scrape tweets.
+
+The initial Eliza character sheet can be found here:
+- [Character sheet](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/src/characters/mitsui.character.json)
+
 
 ### Suilend
 
@@ -51,3 +64,35 @@ The plan is to create enough timestamp datasets that can be leveraged by the com
 ## Features
 
 ## Run
+
+To fully run Mitsui Terminal locally, you need the following environment variables. 
+```
+# .env.local
+NEXT_PUBLIC_GOOGLE_DESKTOP_CLIENT_ID=
+NEXT_PUBLIC_GOOGLE_CLIENT_SECRET=
+
+ATOMA_API_KEY=
+INSIDEX_API_KEY=
+OPENAI_API_KEY=
+WALRUS_PUBLISHER=https://publisher.walrus-testnet.walrus.space
+WALRUS_AGGREGATOR=https://aggregator.walrus-testnet.walrus.space
+SUI_RPC_URL=https://fullnode.mainnet.sui.io
+SUI_SCAN_API=https://api.suiscan.xyz
+NEXT_PUBLIC_PUBLIC_KEY=
+NEXT_PUBLIC_SAMPLE_SEED_PHRASE=
+NEXT_PUBLIC_PUBLIC_KEY2=
+NEXT_PUBLIC_PRIVATE_KEY2=
+NEXT_PUBLIC_BLOCKVISION_API_KEY=
+NEXT_PUBLIC_BLOCKVISION_HTPPS=
+NEXT_PUBLIC_BLOCKVISION_WEBSOCKETS=
+```
+### Steps
+```
+# STEP 1: Install depedencies
+pnpm install
+
+# STEP 2: Run terminal 
+npm run tauri dev
+
+```
+
