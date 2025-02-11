@@ -17,7 +17,7 @@
 - [Run](#run)
 
 ## Overview
-Mitsui Terminal is a next-gen DeFi trading and management platform, seamlessly integrating AI-driven automation with DeFi protocols on Sui. Powered by Mitsui Protocol, Mitsui Terminal simplifies DeFi interactions, enhances market intelligence, and provides smart insights for traders, investors, and developers. Designed to be intuitive yet powerful, Mitsui Terminal brings together seamless tooling integrations, predictive analytics, and automated workflows to optimize trading, lending, and asset management across multiple protocols.
+Mitsui Terminal is a next-gen DeFi trading and management desktop app (for Mac and Windows), seamlessly integrating AI-driven automation with DeFi protocols on Sui. Powered by Mitsui Protocol, Mitsui Terminal simplifies DeFi interactions, enhances market intelligence, and provides smart insights for traders, investors, and developers. Designed to be intuitive yet powerful, Mitsui Terminal brings together seamless tooling integrations, predictive analytics, and automated workflows to optimize trading, lending, and asset management across multiple protocols.
 
 <img src="https://github.com/user-attachments/assets/264211f3-7c46-45f2-acb0-d9b836a40617" alt="Mitsui High Level Design" width="600"/>
 
