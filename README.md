@@ -119,6 +119,17 @@ https://github.com/user-attachments/assets/86761f95-961d-4683-a2e3-af614f40d413
 
 ## Features
 
+### Mini Apps
+<img src="https://github.com/user-attachments/assets/7150a8a2-c45c-46b8-ba40-8eb10e218cbd" alt="Mitsui Mini App" width="600"/>
+
+### Market Feed Example
+
+<img src="https://github.com/user-attachments/assets/4f79a398-665c-4a8e-bdad-10502f816166" alt="Mitsui Market Feed" width="600"/>
+
+<img src="https://github.com/user-attachments/assets/da28bbbe-df87-4e13-a171-2e1718dc8a98" alt="Mitsui Market Feed" width="600"/>
+
+<img src="https://github.com/user-attachments/assets/e3fefb7a-7399-48ae-a947-bee379bb29a8" alt="Mitsui Market Feed" width="600"/>
+
 ## Run
 
 To fully run Mitsui Terminal locally, you need the following environment variables. 
