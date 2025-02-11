@@ -46,18 +46,51 @@ We further leverage Atoma's model to analyze tweets:
 - [Analyzer scripts](https://github.com/Mitsui-Protocol/mitsui-terminal/tree/main/scripts)
 - [Tweet analyzer](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/scripts/analyze-tweets.js)
 
+
+
+https://github.com/user-attachments/assets/a4b67752-910b-4794-8b84-b10121f761e9
+
+
+
 ### Eliza Framework
 To afford Mitsui Terminal with a personality the Eliza Framework is used to create multiple characters. Additionally, we leverage their Twitter service to scrape tweets.
 
 The initial Eliza character sheet can be found here:
 - [Character sheet](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/src/characters/mitsui.character.json)
 
+### Bluefin
+We showcase the automated interaction of our If-This-Then-That tool with Bluefin below:
 
-### Suilend
+```
+If significant holder movement takes place
+Then swap 0.1 USDT to USDC
+```
+
+https://github.com/user-attachments/assets/ad8a89ab-60b8-4f92-af6b-3a11ae8c4a14
+
 
 ### Navi Protocol
+We showcase the automated interaction of our If-This-Then-That tool with NAVI protocol below:
+```
+If $SUI is above $3.00
+Then supply 0.5 $SUI to Navi protocol
+```
 
-### Bluefin
+https://github.com/user-attachments/assets/f4c589c7-2deb-4a0f-9dc2-0b26b98331a8
+
+
+### Suilend
+We showcase the automated interaction of our If-This-Then-That tool with Suilend below:
+
+```
+
+If $SUI is below is $2.00 dollars
+Then deposit 0.2 SUI
+```
+
+https://github.com/user-attachments/assets/86761f95-961d-4683-a2e3-af614f40d413
+
+
 
 ## Architecture
 
