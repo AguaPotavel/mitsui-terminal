@@ -4,6 +4,18 @@
 
 ## Table of Contents
 
+- [Overview](#overview)
+- [Integrations](#integrations)
+  - [Sui Network](#sui-network)
+  - [Atoma Network](#atoma-network)
+  - [Eliza Framework](#eliza-framework)
+  - [Bluefin](#bluefin)
+  - [Navi Protocol](#navi-protocol)
+  - [Suilend](#suilend)
+- [Architecture](#architecture)
+- [Features](#features)
+- [Run](#run)
+
 ## Overview
 Mitsui Terminal is a next-gen DeFi trading and management platform, seamlessly integrating AI-driven automation with DeFi protocols on Sui. Powered by Mitsui Protocol, Mitsui Terminal simplifies DeFi interactions, enhances market intelligence, and provides smart insights for traders, investors, and developers. Designed to be intuitive yet powerful, Mitsui Terminal brings together seamless tooling integrations, predictive analytics, and automated workflows to optimize trading, lending, and asset management across multiple protocols.
 
@@ -54,7 +66,6 @@ We further leverage Atoma's model to analyze tweets:
 
 
 https://github.com/user-attachments/assets/a4b67752-910b-4794-8b84-b10121f761e9
-
 
 
 ### Eliza Framework
