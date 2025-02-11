@@ -12,7 +12,6 @@
   - [Bluefin](#bluefin)
   - [Navi Protocol](#navi-protocol)
   - [Suilend](#suilend)
-- [Architecture](#architecture)
 - [Features](#features)
 - [Run](#run)
 
@@ -112,10 +111,6 @@ Then deposit 0.2 SUI
 ```
 
 https://github.com/user-attachments/assets/86761f95-961d-4683-a2e3-af614f40d413
-
-
-
-## Architecture
 
 ## Features
 
