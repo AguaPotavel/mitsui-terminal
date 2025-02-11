@@ -64,7 +64,9 @@ The initial Eliza character sheet can be found here:
 - [Character sheet](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/src/characters/mitsui.character.json)
 
 ### Bluefin
-We showcase the automated interaction of our If-This-Then-That tool with Bluefin below:
+We showcase the automated interaction of our If-This-Then-That tool with Bluefin in the video below, the source code can be found here:
+
+- [Bluefin Mitsui service hook](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/src/utils/bluefin.ts)
 
 ```
 If significant holder movement takes place
@@ -75,7 +77,10 @@ https://github.com/user-attachments/assets/ad8a89ab-60b8-4f92-af6b-3a11ae8c4a14
 
 
 ### Navi Protocol
-We showcase the automated interaction of our If-This-Then-That tool with NAVI protocol below:
+We showcase the automated interaction of our If-This-Then-That tool with NAVI Protocol in the video below, the source code can be found here:
+
+- [Navi Protocol Mitsui service hook](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/src/utils/navi.ts)
+
 ```
 If $SUI is above $3.00
 Then supply 0.5 $SUI to Navi protocol
@@ -85,7 +90,9 @@ https://github.com/user-attachments/assets/f4c589c7-2deb-4a0f-9dc2-0b26b98331a8
 
 
 ### Suilend
-We showcase the automated interaction of our If-This-Then-That tool with Suilend below:
+We showcase the automated interaction of our If-This-Then-That tool with Suilend in the video below, the source code can be found here:
+
+- [Suilend Mitsui service hook](https://github.com/Mitsui-Protocol/mitsui-terminal/blob/main/src/utils/suilend.ts)
 
 ```
 
