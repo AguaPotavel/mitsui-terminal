@@ -7,7 +7,7 @@ export const StatusProvider = ({ children }) => {
   const [networkStatus, setNetworkStatus] = useState({
     mitsui: {
       status: 'online',
-      metrics: { responseTime: 150, activeSessions: 24, model: 'GPT-4' }
+      metrics: { responseTime: 150, activeSessions: 24, model: 'DeepSeek-R1' }
     },
     sui: {
       status: 'online',

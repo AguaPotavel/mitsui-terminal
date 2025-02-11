@@ -183,7 +183,7 @@ const LoadingPageContent = () => {
         {/* Footer */}
         <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col items-center text-black/50 text-sm space-y-1 backdrop-blur-sm">
           <span>Version 0.1.0-alpha</span>
-          <span>© 2024 Mitsui Protocol. All rights reserved.</span>
+          <span>© 2025 Mitsui Protocol. All rights reserved.</span>
         </div>
       </animated.div>
 

@@ -19,7 +19,8 @@ const SERVICES = [
   { id: 'rss', icon: Rss, name: 'RSS Feed', color: '#FFA500' },
   { id: 'cetus', icon: Waves, name: 'Cetus', color: '#6C5CE7' },
   { id: 'bluefin', icon: BarChart2, name: 'Bluefin', color: '#0984E3' },
-  { id: 'suilend', icon: PiggyBank, name: 'Suilend', color: '#00B894' },
+  { id: 'suilend', icon: PiggyBank, name: 'Suilend', color: '#1E90FF' },
+  { id: 'navi', icon: PiggyBank, name: 'Navi', color: '#00B894' },
 ];
 
 const IFTTTApp = React.memo(({ isExpanded, theme }) => {
@@ -29,6 +30,7 @@ const IFTTTApp = React.memo(({ isExpanded, theme }) => {
   const [selectedService, setSelectedService] = useState(null);
   const [configuredTrigger, setConfiguredTrigger] = useState(null);
   const [configuredAction, setConfiguredAction] = useState(null);
+  const [configuredElseAction, setConfiguredElseAction] = useState(null);
   const [showActionBuilder, setShowActionBuilder] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSaving, setIsSaving] = useState(false);
@@ -86,42 +88,56 @@ const IFTTTApp = React.memo(({ isExpanded, theme }) => {
     setShowActionBuilder(false);
   }, [selectedService]);
 
+  const handleElseActionSave = useCallback((action, config) => {
+    if (!selectedService) return;
+
+    setConfiguredElseAction({
+      ...action,
+      config,
+      service: selectedService
+    });
+    setSelectedService(null);
+    setShowActionBuilder(false);
+  }, [selectedService]);
+
   const handleCreateFlow = useCallback(async () => {
-    if (!configuredTrigger || !configuredAction) return;
+    console.log('Creating flow with:', {
+      trigger: configuredTrigger,
+      action: configuredAction,
+      elseAction: configuredElseAction,
+      selectedService
+    });
+
+    if (!configuredTrigger || !configuredAction) {
+      setError('Please configure both trigger and action');
+      return;
+    }
 
     try {
       setIsSaving(true);
-      const newFlow = {
-        name: `${configuredTrigger.title} → ${configuredAction.title}`,
-        trigger: {
-          service: configuredTrigger.service,
-          action: {
-            id: configuredTrigger.id,
-            title: configuredTrigger.title,
-            config: configuredTrigger.config
-          }
-        },
-        action: {
-          service: configuredAction.service,
-          action: {
-            id: configuredAction.id,
-            title: configuredAction.title,
-            config: configuredAction.config
-          }
-        }
+      const flowData = {
+        trigger: configuredTrigger,
+        action: configuredAction,
+        elseAction: configuredElseAction || null,
       };
 
-      const { flow } = await createFlow(newFlow);
+      console.log('Sending flow data:', flowData);
+      
+      const { flow } = await createFlow(flowData);
+      console.log('Flow created:', flow);
+      
       setFlows(prevFlows => [...prevFlows, flow]);
       setConfiguredTrigger(null);
       setConfiguredAction(null);
+      setConfiguredElseAction(null);
+      setSelectedService(null);
     } catch (error) {
-      console.error('Failed to create flow:', error);
-      setError(error.message);
+      console.error('Flow creation error:', error);
+      setError(error.message || 'Failed to create flow');
     } finally {
       setIsSaving(false);
     }
-  }, [configuredTrigger, configuredAction]);
+  }, [configuredTrigger, configuredAction, configuredElseAction, selectedService]);
 
   // Add new handlers
   const handleTriggerServiceSelect = useCallback((service) => {
@@ -176,6 +192,16 @@ const IFTTTApp = React.memo(({ isExpanded, theme }) => {
       onBack={handleBack}
       isExpanded={isExpanded}
       onSaveAction={handleActionSave}
+      selectedService={selectedService}
+    />
+  );
+
+  const renderElseActionView = () => (
+    <ActionBuilder
+      theme={theme}
+      onBack={handleBack}
+      isExpanded={isExpanded}
+      onSaveAction={handleElseActionSave}
       selectedService={selectedService}
     />
   );
@@ -237,6 +263,7 @@ const IFTTTApp = React.memo(({ isExpanded, theme }) => {
               <ClassicView
                 configuredTrigger={configuredTrigger}
                 configuredAction={configuredAction}
+                configuredElseAction={configuredElseAction}
                 onTriggerSelect={() => setShowServiceSelect(true)}
                 onTriggerEdit={() => {
                   setSelectedService(configuredTrigger.service);
@@ -245,6 +272,7 @@ const IFTTTApp = React.memo(({ isExpanded, theme }) => {
                 onTriggerDelete={() => {
                   setConfiguredTrigger(null);
                   setConfiguredAction(null);
+                  setConfiguredElseAction(null);
                 }}
                 onActionSelect={() => {
                   if (configuredTrigger) {
@@ -259,8 +287,22 @@ const IFTTTApp = React.memo(({ isExpanded, theme }) => {
                   }
                 }}
                 onActionDelete={() => setConfiguredAction(null)}
+                onElseActionSelect={() => {
+                  if (configuredTrigger) {
+                    setSelectedService({ id: 'wallet', icon: Wallet, name: 'Wallet', color: '#4ECDC4' });
+                    setShowActionBuilder(true);
+                  }
+                }}
+                onElseActionEdit={() => {
+                  if (configuredElseAction?.service) {
+                    setSelectedService(configuredElseAction.service);
+                    setShowActionBuilder(true);
+                  }
+                }}
+                onElseActionDelete={() => setConfiguredElseAction(null)}
                 onCreateFlow={handleCreateFlow}
                 isSaving={isSaving}
+                isValid={configuredTrigger?.config && configuredAction?.config && selectedService}
                 theme={theme}
                 getAccentTextColor={getAccentTextColor}
               />

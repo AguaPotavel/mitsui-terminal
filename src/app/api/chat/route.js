@@ -50,40 +50,12 @@ export async function POST(request) {
         });
       }
 
-      const response = await fetch('https://api.atoma.network/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${process.env.ATOMA_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          stream: false,
-          model: "deepseek-ai/DeepSeek-R1",
-          messages,
-          max_tokens: 2048
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
+      // Return the analysis as plain text
       return NextResponse.json({
-        character: {
-          name: mitsuiCharacter.name,
-          bio: mitsuiCharacter.bio[0],
-          personality: {
-            humor: 0.85,
-            sass: 0.95,
-            honesty: 0.75
-          },
-          system_prompt: mitsuiCharacter.system
-        },
         choices: [{
           message: {
             role: "assistant",
-            content: `${analysis}\n\n${data.choices[0].message.content}` 
+            content: "```\n" + analysis + "\n```"
           }
         }]
       });

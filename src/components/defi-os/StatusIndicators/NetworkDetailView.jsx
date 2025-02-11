@@ -7,7 +7,7 @@ export const NetworkDetailView = ({ data, theme }) => {
   const displayMetrics = data.network === 'mitsui' ? [
     { key: 'responseTime', icon: Clock, unit: 'ms', value: data.metrics.responseTime },
     { key: 'activeSessions', icon: Database, unit: '', value: data.metrics.activeSessions },
-    { key: 'model', icon: Activity, unit: '', value: 'GPT-4' }
+    { key: 'model', icon: Activity, unit: '', value: 'DeepSeek-R1' }
   ] : [
     { key: 'tps', icon: Activity, unit: 'TPS', value: data.metrics.tps || 0 },
     { key: 'gasPrice', icon: Database, unit: 'SUI', value: data.metrics.gasPrice },

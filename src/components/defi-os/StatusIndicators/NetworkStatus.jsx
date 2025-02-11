@@ -90,7 +90,7 @@ const NetworkStatus = ({ network, status, metrics, theme, onClick }) => {
             <div className="text-sm opacity-90">
               <p>Response Time: {metrics.responseTime}ms</p>
               <p>Active Sessions: {metrics.activeSessions}</p>
-              <p>Model: GPT-4 Turbo</p>
+              <p>Model: DeepSeek-R1</p>
             </div>
           </div>
         );

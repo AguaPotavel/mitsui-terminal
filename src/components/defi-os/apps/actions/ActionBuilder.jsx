@@ -68,6 +68,13 @@ const actionServices = [
     color: '#0984E3',
     actions: [
       {
+        id: 'swap',
+        title: 'Swap tokens',
+        description: 'Swap tokens on Bluefin',
+        isPro: true,
+        icon: Repeat
+      },
+      {
         id: 'open-long',
         title: 'Open long position',
         description: 'Open a long position on Bluefin',
@@ -88,7 +95,7 @@ const actionServices = [
     name: 'Suilend',
     description: 'Lending and borrowing on Suilend',
     icon: PiggyBank,
-    color: '#00B894',
+    color: '#1E90FF',
     actions: [
       {
         id: 'supply',
@@ -101,6 +108,29 @@ const actionServices = [
         id: 'borrow',
         title: 'Borrow assets',
         description: 'Borrow assets from Suilend',
+        isPro: true,
+        icon: Minus
+      }
+    ]
+  },
+  {
+    id: 'navi',
+    name: 'Navi',
+    description: 'Lending and borrowing on Navi',
+    icon: PiggyBank,
+    color: '#00B894',
+    actions: [
+      {
+        id: 'supply',
+        title: 'Supply assets',
+        description: 'Supply assets to Navi',
+        isPro: true,
+        icon: Plus
+      },
+      {
+        id: 'borrow',
+        title: 'Borrow assets',
+        description: 'Borrow assets from Navi',
         isPro: true,
         icon: Minus
       }

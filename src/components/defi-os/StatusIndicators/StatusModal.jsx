@@ -13,7 +13,7 @@ const StatusModal = ({ isOpen, onClose, type, data, theme }) => {
         onClick={onClose}
       />
       <div 
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl z-[161]"
+        className="fixed top-1/8 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl z-[161]"
         style={{
           background: theme.colors.background,
           border: `1px solid ${theme.colors.border}`,

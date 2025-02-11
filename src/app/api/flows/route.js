@@ -1,58 +1,28 @@
 import { NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 
 // This tells Next.js to handle all HTTP methods dynamically
 export const dynamic = 'auto';
 // Optionally set revalidation time if needed
-export const revalidate = 0; // 0 means validate on every request
+export const revalidate = 0;
+
+const flowsPath = path.join(process.cwd(), 'data', 'flows.json');
 
 // GET /api/flows - List flows
 export async function GET() {
   try {
-    // Mock data
-    const flows = [
-      {
-        id: '1',
-        userId: 'user123',
-        name: 'Price Alert & Token Send',
-        trigger: {
-          service: {
-            id: 'token',
-            name: 'Token',
-            icon: 'Coins',
-            color: '#FF6B6B'
-          },
-          action: {
-            id: 'price-below',
-            title: 'Price drops below',
-            config: {
-              token: 'SUI',
-              threshold: '0.5',
-              timeframe: '1h'
-            }
-          }
-        },
-        action: {
-          service: {
-            id: 'wallet',
-            name: 'Wallet',
-            icon: 'Wallet',
-            color: '#4ECDC4'
-          },
-          action: {
-            id: 'send-token',
-            title: 'Send token',
-            config: {
-              token: 'SUI',
-              amount: '10',
-              recipient: '0x123...'
-            }
-          }
-        },
-        enabled: true,
-        createdAt: '2024-03-15T10:00:00Z',
-        updatedAt: '2024-03-15T10:00:00Z'
+    // Read existing flows
+    let flows = [];
+    try {
+      if (fs.existsSync(flowsPath)) {
+        const fileData = fs.readFileSync(flowsPath, 'utf8');
+        flows = JSON.parse(fileData);
       }
-    ];
+    } catch (err) {
+      console.error('Error reading flows.json:', err);
+      // Continue with empty flows array if file doesn't exist or is corrupt
+    }
 
     return NextResponse.json({ flows }, { status: 200 });
   } catch (error) {
@@ -68,30 +38,61 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json();
+    console.log('Received flow data:', body);
     
     if (!body.trigger || !body.action) {
+      console.error('Missing trigger or action in request');
       return NextResponse.json(
         { error: 'Missing trigger or action' },
         { status: 400 }
       );
     }
 
-    // Mock creating a new flow
+    // Read existing flows
+    let flows = [];
+    try {
+      if (fs.existsSync(flowsPath)) {
+        console.log('Reading existing flows from:', flowsPath);
+        const fileData = fs.readFileSync(flowsPath, 'utf8');
+        flows = JSON.parse(fileData);
+      }
+    } catch (err) {
+      console.error('Error reading flows.json:', err);
+      // Continue with empty flows array if file doesn't exist or is corrupt
+    }
+
+    // Create new flow
     const newFlow = {
       id: Math.random().toString(36).substr(2, 9),
-      userId: 'user123',
       ...body,
       enabled: true,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };
 
+    console.log('Created new flow:', newFlow);
+
+    // Add to flows array and save
+    flows.push(newFlow);
+    
+    try {
+      console.log('Writing flows to file:', flowsPath);
+      fs.writeFileSync(flowsPath, JSON.stringify(flows, null, 2));
+      console.log('Successfully wrote flows to file');
+    } catch (err) {
+      console.error('Error writing flows.json:', err);
+      return NextResponse.json(
+        { error: 'Failed to save flow to file: ' + err.message },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json({ flow: newFlow }, { status: 201 });
   } catch (error) {
     console.error('POST /api/flows error:', error);
     return NextResponse.json(
-      { error: 'Failed to create flow' }, 
+      { error: 'Failed to create flow: ' + error.message },
       { status: 500 }
     );
   }
-} 
+}

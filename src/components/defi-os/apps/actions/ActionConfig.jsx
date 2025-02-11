@@ -44,6 +44,8 @@ const ActionConfig = ({ theme, service, action, onBack, onSave }) => {
         return renderBluefinFields();
       case 'suilend':
         return renderSuilendFields();
+      case 'navi':
+        return renderNaviFields();
       case 'twitter':
         return renderTwitterFields();
       default:
@@ -383,6 +385,79 @@ const ActionConfig = ({ theme, service, action, onBack, onSave }) => {
 
   const renderBluefinFields = () => {
     switch (action.id) {
+      case 'swap':
+        return (
+          <div className="space-y-4">
+            <div>
+              <label className="block mb-2 text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                Token to Swap
+              </label>
+              <input
+                type="text"
+                placeholder="e.g., SUI"
+                className="w-full p-3 rounded-lg"
+                style={{ 
+                  backgroundColor: theme.colors.secondary,
+                  color: theme.colors.text.primary,
+                  border: `1px solid ${theme.colors.border}`
+                }}
+                value={config.tokenIn}
+                onChange={(e) => setConfig({ ...config, tokenIn: e.target.value })}
+              />
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                Amount to Swap
+              </label>
+              <input
+                type="number"
+                placeholder="Enter amount"
+                className="w-full p-3 rounded-lg"
+                style={{ 
+                  backgroundColor: theme.colors.secondary,
+                  color: theme.colors.text.primary,
+                  border: `1px solid ${theme.colors.border}`
+                }}
+                value={config.amountIn}
+                onChange={(e) => setConfig({ ...config, amountIn: e.target.value })}
+              />
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                Token to Receive
+              </label>
+              <input
+                type="text"
+                placeholder="e.g., USDC"
+                className="w-full p-3 rounded-lg"
+                style={{ 
+                  backgroundColor: theme.colors.secondary,
+                  color: theme.colors.text.primary,
+                  border: `1px solid ${theme.colors.border}`
+                }}
+                value={config.tokenOut}
+                onChange={(e) => setConfig({ ...config, tokenOut: e.target.value })}
+              />
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                Slippage Tolerance (%)
+              </label>
+              <input
+                type="number"
+                placeholder="0.5"
+                className="w-full p-3 rounded-lg"
+                style={{ 
+                  backgroundColor: theme.colors.secondary,
+                  color: theme.colors.text.primary,
+                  border: `1px solid ${theme.colors.border}`
+                }}
+                value={config.slippage}
+                onChange={(e) => setConfig({ ...config, slippage: e.target.value })}
+              />
+            </div>
+          </div>
+        );
       case 'open-long':
       case 'open-short':
         return (
@@ -491,7 +566,124 @@ const ActionConfig = ({ theme, service, action, onBack, onSave }) => {
       case 'borrow':
         return (
           <div className="space-y-4">
-            {/* Similar structure but for borrowing */}
+            <div>
+              <label className="block mb-2 text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                Asset to Borrow
+              </label>
+              <input
+                type="text"
+                placeholder="Enter token symbol or address"
+                className="w-full p-3 rounded-lg"
+                style={{ 
+                  backgroundColor: theme.colors.secondary,
+                  color: theme.colors.text.primary,
+                  border: `1px solid ${theme.colors.border}`
+                }}
+                value={config.token}
+                onChange={(e) => setConfig({ ...config, token: e.target.value })}
+              />
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                Amount
+              </label>
+              <input
+                type="number"
+                placeholder="Enter amount to borrow"
+                className="w-full p-3 rounded-lg"
+                style={{ 
+                  backgroundColor: theme.colors.secondary,
+                  color: theme.colors.text.primary,
+                  border: `1px solid ${theme.colors.border}`
+                }}
+                value={config.amount}
+                onChange={(e) => setConfig({ ...config, amount: e.target.value })}
+              />
+            </div>
+          </div>
+        );
+    }
+  };
+
+  const renderNaviFields = () => {
+    switch (action.id) {
+      case 'supply':
+        return (
+          <div className="space-y-4">
+            <div>
+              <label className="block mb-2 text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                Asset to Supply
+              </label>
+              <input
+                type="text"
+                placeholder="Enter token symbol or address"
+                className="w-full p-3 rounded-lg"
+                style={{ 
+                  backgroundColor: theme.colors.secondary,
+                  color: theme.colors.text.primary,
+                  border: `1px solid ${theme.colors.border}`
+                }}
+                value={config.token}
+                onChange={(e) => setConfig({ ...config, token: e.target.value })}
+              />
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                Amount
+              </label>
+              <input
+                type="number"
+                placeholder="Enter amount to supply"
+                className="w-full p-3 rounded-lg"
+                style={{ 
+                  backgroundColor: theme.colors.secondary,
+                  color: theme.colors.text.primary,
+                  border: `1px solid ${theme.colors.border}`
+                }}
+                value={config.amount}
+                onChange={(e) => setConfig({ ...config, amount: e.target.value })}
+              />
+            </div>
+          </div>
+        );
+
+      case 'borrow':
+        return (
+          <div className="space-y-4">
+            <div>
+              <label className="block mb-2 text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                Asset to Borrow
+              </label>
+              <input
+                type="text"
+                placeholder="Enter token symbol or address"
+                className="w-full p-3 rounded-lg"
+                style={{ 
+                  backgroundColor: theme.colors.secondary,
+                  color: theme.colors.text.primary,
+                  border: `1px solid ${theme.colors.border}`
+                }}
+                value={config.token}
+                onChange={(e) => setConfig({ ...config, token: e.target.value })}
+              />
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                Amount
+              </label>
+              <input
+                type="number"
+                placeholder="Enter amount to borrow"
+                className="w-full p-3 rounded-lg"
+                style={{ 
+                  backgroundColor: theme.colors.secondary,
+                  color: theme.colors.text.primary,
+                  border: `1px solid ${theme.colors.border}`
+                }}
+                value={config.amount}
+                onChange={(e) => setConfig({ ...config, amount: e.target.value })}
+              />
+            </div>
           </div>
         );
     }
