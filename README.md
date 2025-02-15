@@ -1,4 +1,8 @@
 # Mitsui Terminal 
+
+**Twitter**: [@MitsuiProtocol](https://x.com/MitsuiProtocol)   
+**Website**: [https://www.mitsuiprotocol.ai](https://www.mitsuiprotocol.ai)
+
 ![mitsui-banner](https://github.com/user-attachments/assets/41f52c06-4ac3-4357-918c-27b684841551)
 
 
@@ -14,6 +18,11 @@
   - [Suilend](#suilend)
 - [Features](#features)
 - [Run](#run)
+
+## Contact Us
+**Twitter**: [@MitsuiProtocol](https://x.com/MitsuiProtocol)   
+**Website**: [https://www.mitsuiprotocol.ai](https://www.mitsuiprotocol.ai)
+
 
 ## Overview
 Mitsui Terminal is a next-gen DeFi trading and management desktop app (for Mac and Windows), seamlessly integrating AI-driven automation with DeFi protocols on Sui. Powered by Mitsui Protocol, Mitsui Terminal simplifies DeFi interactions, enhances market intelligence, and provides smart insights for traders, investors, and developers. Designed to be intuitive yet powerful, Mitsui Terminal brings together seamless tooling integrations, predictive analytics, and automated workflows to optimize trading, lending, and asset management across multiple protocols.
